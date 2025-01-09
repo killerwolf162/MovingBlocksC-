@@ -30,6 +30,8 @@ Block& Block::operator=(const Block& other) {
 	return *this;
 }
 
+
+
 #ifdef MOVESEMANTICS
 
 // move-constructor
@@ -46,7 +48,7 @@ Block::Block(Block&& other) noexcept {
 }
 
 //TODO: move - assignment operator
-Block& Block::operator=(const Block&& other) noexcept
+Block& Block::operator=(Block&& other) noexcept
 {
 	std::cout << "Move Assignment opr Block '" << this->name << "' @" << this << std::endl;
 	if (this == &other) return *this;
@@ -54,15 +56,16 @@ Block& Block::operator=(const Block&& other) noexcept
 	delete[] data;
 
 	data = other.data;
-	name = other.name;
+	name = std::move(other.name);
 	size = other.size;
 
-	other.size = 0; // why throw error ::angry_face::
-	other.name = "(nodata: has been moved)";
 	other.data = nullptr;
+	other.size = 0;
+	other.name = "(nodata: has been moved)";
 
 	return *this;
 }
+
 
 #endif
 

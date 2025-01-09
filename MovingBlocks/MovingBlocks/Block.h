@@ -24,7 +24,7 @@ class Block {
 #ifdef MOVESEMANTICS
         // nog nodig voor de 'big five'
         Block(Block&& other) noexcept; // move-constructor
-        Block& operator=(const Block&& other) noexcept; // move-assignment-operator
+        Block& operator=(Block&& other) noexcept; // move-assignment-operator
 #endif
 
     private:

@@ -30,7 +30,7 @@ int main() {
     std::cout << "------" << std::endl;
 
     // gebruik de assignment-oper
-    block3 = block2;
+    block3 = std::move(block2);
     std::cout << block3 << std::endl;
 
     std::cout << "------" << std::endl;
